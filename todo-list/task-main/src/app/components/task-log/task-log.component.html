@@ -1,0 +1,23 @@
+<ng-container *ngIf="taskList.length > 0">
+  <h2>Log de Tarefas</h2>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>Descrição</th>
+        <th>Data</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+
+    <tbody *ngFor="let task of taskList">
+        <tr>
+          <td>{{task.title}}</td>
+          <td>{{task.description}}</td>
+          <td>{{task.date | date : "dd/MM/yyyy"}}</td>
+          <td>{{task.status}}</td>
+        </tr>
+    </tbody>
+  </table>
+</ng-container>

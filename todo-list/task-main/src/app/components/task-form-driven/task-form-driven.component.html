@@ -1,0 +1,88 @@
+<div class="container mt-3">
+  <h2>Adicionar Nova Tarefa</h2>
+
+  <form (ngSubmit)="submitTask(form)" #form="ngForm">
+    <div class="form-group mb-3">
+      <label for="title">Título</label>
+      <input
+        id="title"
+        type="text"
+        [(ngModel)]="newTask.title"
+        name="title"
+        required
+        minlength="5"
+        maxlength="20"
+        class="form-control"
+      />
+
+    <div *ngIf="form.controls['title'].errors?.['required'] && form.controls['title'].touched" class="text-danger">
+      O campo título deve ser preenchido.
+    </div>
+    <div *ngIf="form.controls['title'].errors?.['minlength'] && form.controls['title'].touched" class="text-danger">
+      O campo título deve ter pelo menos 5 caracteres.
+    </div>
+    <div *ngIf="form.controls['title'].errors?.['maxlength'] && form.controls['title'].touched" class="text-danger">
+      O campo título deve ter no máximo 20 caracteres.
+    </div>
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="description">Descrição</label>
+      <input
+        id="description"
+        type="text"
+        [(ngModel)]="newTask.description"
+        name="description"
+        required
+        minlength="5"
+        maxlength="50"
+        class="form-control"
+      />
+      <div *ngIf="form.controls['description'].errors?.['required'] && form.controls['description'].touched" class="text-danger">
+        O campo Descrição deve ser preenchido.
+      </div>
+      <div *ngIf="form.controls['description'].errors?.['minlength'] && form.controls['description'].touched" class="text-danger">
+        O campo Descrição deve ter pelo menos 5 caracteres.
+      </div>
+      <div *ngIf="form.controls['description'].errors?.['maxlength'] && form.controls['description'].touched" class="text-danger">
+        O campo título deve ter no máximo 50 caracteres.
+      </div>
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="date">Data de Vencimento</label>
+      <input
+        id="date"
+        type="date"
+        [(ngModel)]="newTask.date"
+        name="date"
+        required
+        pattern="^\d{4}-\d{2}-\d{2}$"
+        class="form-control"
+      />
+      <div *ngIf="form.controls['date'].errors?.['required'] && form.controls['date'].touched" class="text-danger">
+        O campo Data deve ser preenchido.
+      </div>
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="status">Status</label>
+      <select
+        name="status"
+        id="status"
+        [(ngModel)]="newTask.status"
+        required
+        class="form-control"
+      >
+        <option value="toDo">ToDo</option>
+        <option value="trabalhando">Trabalhando</option>
+        <option value="finalizado">Finalizado</option>
+      </select>
+      <div *ngIf="form.controls['status'].errors?.['required'] && form.controls['status'].touched" class="text-danger">
+        O campo Status deve ser preenchido.
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Criar</button>
+  </form>
+</div>

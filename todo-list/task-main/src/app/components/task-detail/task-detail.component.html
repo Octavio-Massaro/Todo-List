@@ -1,0 +1,15 @@
+<div class="my-3">
+  <h2>Detalhes da Tarefa</h2>
+
+  <div class="card my-3" style="width: 15rem; height: 23rem;">
+    <div class="card-body">
+      <h4 class="card-title">Titulo: {{task.title}}</h4>
+      <p class="card-text">Descrição: {{task.description}} </p>
+      <p class="card-text">Data de Vencimento: {{ task.date | date : "dd/MM/yyyy" }}</p>
+      <p class="card-text">Status: {{task.status}}</p>
+      <button (click)="handleEditTask(task)" class="btn btn-primary my-3">Atualizar</button>
+    </div>
+  </div>
+
+  <button (click)="close()" class="btn btn-primary my-3">Fechar</button>
+</div>

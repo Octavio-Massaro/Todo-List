@@ -1,0 +1,52 @@
+<div class="container my-5 formulario">
+  <h2>Adicionar Nova Tarefa</h2>
+
+  <form [formGroup]="formulario" (ngSubmit)="submitTask()">
+    <div class="mb-3">
+      <label for="title" class="form-label">Título</label>
+      <input id="title" type="text" class="form-control" formControlName="title" name="title" />
+      <div *ngIf="formulario.get('title')?.invalid && (formulario.get('title')?.touched)" class="text-danger">
+        <div *ngIf="formulario.get('title')?.errors?.['required']">O campo título é obrigatório.</div>
+        <div *ngIf="formulario.get('title')?.errors?.['maxlength']">Máximo de 20 caracteres.</div>
+        <div *ngIf="formulario.get('title')?.errors?.['minlength']">Mínimo de 5 caracteres.</div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Descrição</label>
+      <input
+        id="description"
+        type="text"
+        class="form-control"
+        formControlName="description"
+        name="description"
+      />
+      <div *ngIf="formulario.get('description')?.invalid && (formulario.get('description')?.touched)" class="text-danger">
+        <div *ngIf="formulario.get('description')?.errors?.['required']">O campo descrição é obrigatório.</div>
+        <div *ngIf="formulario.get('description')?.errors?.['maxlength']">Máximo de 50 caracteres.</div>
+        <div *ngIf="formulario.get('description')?.errors?.['minlength']">Mínimo de 5 caracteres.</div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="date" class="form-label">Data de Vencimento</label>
+      <input id="date" type="date" class="form-control" formControlName="date" name="date" />
+      <div *ngIf="formulario.get('date')?.invalid && (formulario.get('date')?.dirty || formulario.get('date')?.touched)" class="text-danger">
+      <div *ngIf="formulario.get('date')?.errors?.['required']">O campo data é obrigatório.</div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="status"  class="form-label">Status</label>
+      <select name="status"  class="form-control" id="status" formControlName="status">
+        <option value="toDo">To-Do</option>
+        <option value="trabalhando">Trabalhando</option>
+        <option value="finalizado">Finalizado</option>
+      </select>
+      <div *ngIf="formulario.get('status')?.invalid && (formulario.get('status')?.touched)" class="text-danger">
+        <div *ngIf="formulario.get('status')?.errors?.['required']">O campo status é obrigatório.</div>
+      </div>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Adicionar Tarefas</button>
+  </form>
+</div>

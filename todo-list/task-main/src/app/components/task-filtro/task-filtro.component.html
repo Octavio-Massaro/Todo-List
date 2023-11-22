@@ -1,0 +1,10 @@
+<div class="container d-flex justify-content-center">
+    <label for="status2" class="form-label me-2">Filtro</label>
+    <select name="filtro" id="status2" class="form-select" [(ngModel)]="filtro" (change)="handleSelect()">
+      <option value="all">Todos os Status</option>
+      <option value="toDo">ToDo</option>
+      <option value="trabalhando">Trabalhando</option>
+      <option value="finalizado">Finalizado</option>
+    </select>
+</div>
+
